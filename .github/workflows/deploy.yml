@@ -2,7 +2,7 @@ name: Deploy Eleventy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main]  # Or your source branch
 
 jobs:
   build-deploy:
@@ -26,6 +26,7 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
+        personal_token: ${{ secrets.GH_PAT }}
+        external_repository: pensami-ciclabile/pensami-ciclabile.github.io
         publish_dir: ./_site
+        publish_branch: main
