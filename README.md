@@ -1,5 +1,4 @@
-# pensami-ciclabile.github.io
-Pensami Ciclabile on the web
+# Pensami Ciclabile on the web
 
 
 Local exec:
