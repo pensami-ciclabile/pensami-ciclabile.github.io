@@ -1,0 +1,185 @@
+---
+layout: base.njk
+title: Gallery - PensaMI Ciclabile
+eleventyNavigation:
+  key: Gallery
+  order: 3
+---
+
+<div class="container my-4 content">
+  <h1 class="map-title">Image Gallery</h1>
+  <p class="map-description">Click on an image to view it larger and see related shots.</p>
+
+  <!-- <div style="background-color: #f0f0f0; padding: 10px; border: 1px solid #ccc; margin-bottom:20px;">
+    <h3>Debugging Information:</h3>
+    <p><strong>Is galleryPosts defined?</strong>
+      {% if galleryPosts %}YES{% else %}NO (or empty/falsy){% endif %}
+    </p>
+    <p><strong>galleryPosts raw dump:</strong></p>
+    <pre>{{ galleryPosts | dump | escape }}</pre>
+    <p><strong>galleryPosts length:</strong> {{ galleryPosts.length }}</p>
+  </div> -->
+
+  {% set posts = galleryPosts.default or galleryPosts %}
+  {% if posts | length %}
+  <div class="gallery-grid">
+    {% for post in posts %}
+      <div class="gallery-item" 
+           data-post-id="{{ post.id }}"
+           data-post-title="{{ post.title }}"
+           data-images="{{ post.lightboxImages | dump | escape }}" 
+           role="button" 
+           tabindex="0" 
+           aria-label="View gallery images for {{ post.title }}">
+        <img src="/assets/posts/{{ post.id }}/{{ post.originalImage }}" alt="{{ post.altText }}">
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>No images in the gallery yet. Check back soon!</p>
+{% endif %}
+
+
+
+
+  <!-- 
+  {% if posts | length %}
+    <div class="gallery-grid">
+      {% for post in posts %}
+        <div class="gallery-item" 
+             data-post-id="{{ post.id }}"
+             data-post-title="{{ post.title }}"
+             data-images="{{ post.lightboxImages | dump | escape }}" 
+             role="button" 
+             tabindex="0" 
+             aria-label="View gallery images for {{ post.title }}">
+          <img src="/assets/posts/{{ post.id }}/{{ post.originalImage }}" alt="{{ post.altText }}">
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No images in the gallery yet. Check back soon!</p>
+  {% endif %}
+</div> -->
+
+<div id="lightbox" class="lightbox-overlay" style="display: none;" aria-modal="true" role="dialog" aria-labelledby="lightboxTitle">
+  <div class="lightbox-content">
+    <span class="lightbox-close" role="button" tabindex="0" aria-label="Close lightbox">&times;</span>
+    <img id="lightboxImage" src="" alt="Enlarged gallery image">
+    <div id="lightboxTitle" class="lightbox-caption"></div>
+    <button class="lightbox-prev" aria-label="Previous image" style="display: none;">&lt;</button>
+    <button class="lightbox-next" aria-label="Next image" style="display: none;">&gt;</button>
+    <div class="lightbox-counter"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxTitle');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const lightboxPrev = document.querySelector('.lightbox-prev');
+    const lightboxNext = document.querySelector('.lightbox-next');
+    const lightboxCounter = document.querySelector('.lightbox-counter');
+
+    let currentPostImages = [];
+    let currentImageIndex = 0;
+    let currentPostId = '';
+
+    function openLightbox(postElement) {
+      currentPostId = postElement.dataset.postId;
+      currentPostImages = JSON.parse(postElement.dataset.images);
+      const postTitle = postElement.dataset.postTitle;
+      currentImageIndex = 0; // Start with the first image in the lightbox set
+
+      updateLightboxImage(postTitle);
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      lightboxClose.focus(); // Focus on close button for accessibility
+    }
+
+    function updateLightboxImage(postTitle) {
+      if (currentPostImages.length === 0) return;
+      
+      const imageName = currentPostImages[currentImageIndex];
+      lightboxImage.src = `/assets/posts/${currentPostId}/${imageName}`;
+      lightboxImage.alt = `Enlarged image for ${postTitle} - ${imageName}`;
+      lightboxCaption.textContent = postTitle;
+
+      lightboxPrev.style.display = currentPostImages.length > 1 ? 'block' : 'none';
+      lightboxNext.style.display = currentPostImages.length > 1 ? 'block' : 'none';
+      
+      if (currentPostImages.length > 1) {
+        lightboxCounter.textContent = `${currentImageIndex + 1} / ${currentPostImages.length}`;
+        lightboxPrev.disabled = currentImageIndex === 0;
+        lightboxNext.disabled = currentImageIndex === currentPostImages.length - 1;
+      } else {
+        lightboxCounter.textContent = '';
+      }
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Restore scrolling
+      currentPostImages = [];
+      currentImageIndex = 0;
+      currentPostId = '';
+    }
+
+    function showPrevImage() {
+      if (currentImageIndex > 0) {
+        currentImageIndex--;
+        updateLightboxImage(lightboxCaption.textContent);
+      }
+    }
+
+    function showNextImage() {
+      if (currentImageIndex < currentPostImages.length - 1) {
+        currentImageIndex++;
+        updateLightboxImage(lightboxCaption.textContent);
+      }
+    }
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => openLightbox(item));
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault(); // Prevent space from scrolling
+          openLightbox(item);
+        }
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxClose.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') closeLightbox();
+    });
+
+    lightboxPrev.addEventListener('click', showPrevImage);
+    lightboxNext.addEventListener('click', showNextImage);
+
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') {
+          closeLightbox();
+        }
+        if (e.key === 'ArrowLeft' && currentPostImages.length > 1) {
+          showPrevImage();
+        }
+        if (e.key === 'ArrowRight' && currentPostImages.length > 1) {
+          showNextImage();
+        }
+      }
+    });
+
+    // Close lightbox if overlay is clicked
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) { // Check if the click is on the overlay itself
+            closeLightbox();
+        }
+    });
+  });
+</script>
