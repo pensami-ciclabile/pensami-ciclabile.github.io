@@ -39,29 +39,7 @@ eleventyNavigation:
   <p>No images in the gallery yet. Check back soon!</p>
 {% endif %}
 
-
-
-
-  <!-- 
-  {% if posts | length %}
-    <div class="gallery-grid">
-      {% for post in posts %}
-        <div class="gallery-item" 
-             data-post-id="{{ post.id }}"
-             data-post-title="{{ post.title }}"
-             data-images="{{ post.lightboxImages | dump | escape }}" 
-             role="button" 
-             tabindex="0" 
-             aria-label="View gallery images for {{ post.title }}">
-          <img src="/assets/posts/{{ post.id }}/{{ post.originalImage }}" alt="{{ post.altText }}">
-        </div>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p>No images in the gallery yet. Check back soon!</p>
-  {% endif %}
-</div> -->
-
+</div>
 <div id="lightbox" class="lightbox-overlay" style="display: none;" aria-modal="true" role="dialog" aria-labelledby="lightboxTitle">
   <div class="lightbox-content">
     <span class="lightbox-close" role="button" tabindex="0" aria-label="Close lightbox">&times;</span>

@@ -1,20 +1,49 @@
-// src/_data/galleryPosts.js
-// This file defines the content for your gallery page.
-// Each object in the array represents a "post" or a gallery item.
+const fs = require("fs");
+const path = require("path");
 
-module.exports = [
-  {
-    id: "2024-06-02-mozart", // 'id' should match the folder name under src/assets/posts/
-    title: "Gallery Post", // Title to display, perhaps in lightbox
-    originalImage: "draw-mozart.png", // 'originalImage' is the filename of the image shown in the grid
-    altText: "Drawing", // 'altText' is important for accessibility and SEO
-    lightboxImages: ["draw-mozart.png", "original-mozart.png"] // 'lightboxImages' is an array of *filenames* for this post, including the original, that will be shown in the lightbox.
-  },
-  {
-    id: "2024-06-20-papiniano",
-    title: "Another Interesting Spot",
-    originalImage: "draw-papiniano.png",
-    altText: "Alt text for another spot's image.",
-    lightboxImages: ["draw-papiniano.png", "original-papiniano.png"]
-  },
-];
+const POSTS_DIR = path.join(__dirname, "..", "assets", "posts");
+
+function getPosts() {
+  // Read folders inside posts directory
+  const folders = fs.readdirSync(POSTS_DIR).filter((file) =>
+    fs.statSync(path.join(POSTS_DIR, file)).isDirectory()
+  );
+
+  // Sort folders by date (descending: newest first)
+  const sortedFolders = folders.sort((a, b) => {
+    const dateA = a.slice(0, 10); // 'YYYY-MM-DD'
+    const dateB = b.slice(0, 10);
+    return dateB.localeCompare(dateA); // newer first
+  });
+
+  return sortedFolders.map((folder) => {
+    const folderPath = path.join(POSTS_DIR, folder);
+    const files = fs.readdirSync(folderPath);
+
+    const id = folder; // e.g., 2024-06-02-mozart
+    const nameMatch = folder.match(/^\d{4}-\d{2}-\d{2}-(.+)$/);
+    const nameSlug = nameMatch ? nameMatch[1] : folder;
+    const title = nameSlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
+    const drawFile = files.find(f => f.startsWith("draw"));
+    const originalFile = files.find(f => f.startsWith("original"));
+    const sliceFiles = files.filter(f => f.startsWith("slice"));    
+
+    const lightboxImages = [
+      ...(drawFile ? [drawFile] : []),
+      ...(originalFile ? [originalFile] : []),
+      ...sliceFiles
+    ];
+
+    return {
+      id,
+      title,
+      originalImage: drawFile || originalFile || files[0],
+      altText: `Image for ${nameSlug}`,
+      lightboxImages
+    };
+  });
+}
+
+module.exports = getPosts();
+
