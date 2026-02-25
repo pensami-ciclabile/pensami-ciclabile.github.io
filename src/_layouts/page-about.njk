@@ -2,26 +2,6 @@
 layout: base.njk
 ---
 
-{% set t = translations[lang].about %}
-
 <div class="container my-4 about-page">
-
-    <section class="about-intro">
-        <h2>{{ t.heading }}</h2>
-        {% for paragraph in t.intro %}
-            <p>{{ paragraph | replace("/{lang}/", "/" + lang + "/") | safe }}</p>
-        {% endfor %}
-    </section>
-
-    <section class="faq-section">
-        <h3>{{ t.faqHeading }}</h3>
-
-        {% for faq in t.faqs %}
-        <details class="faq-item">
-            <summary>{{ faq.question }}</summary>
-            <p>{{ faq.answer | replace("/{lang}/", "/" + lang + "/") | safe }}</p>
-        </details>
-        {% endfor %}
-    </section>
-
+    {{ content | safe }}
 </div>

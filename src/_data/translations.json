@@ -5,58 +5,12 @@
       "gallery": "Gallery",
       "contacts": "Contacts"
     },
-    "home": {
-      "title": "PensaMI Ciclabile",
-      "mapTitle": "Explore PensaMI Ciclabile",
-      "mapDescription": "Interactive map with all the redesigned spots in Milan."
-    },
-    "about": {
-      "title": "About - PensaMI Ciclabile",
-      "heading": "PensaMI Ciclabile",
-      "intro": [
-        "PensaMI Ciclabile is a project created by a <a href=\"https://www.danielsc4.it\" target=\"_blank\" rel=\"noopener\">single person</a> dedicated to the themes of sustainable urban mobility, in particular cycling in cities, especially in Milan.",
-        "The project was born from the desire to inspire change in a city that has fallen too far behind other European cities, in order to accelerate towards a city that is more people-friendly, beautiful to live in, and less polluted."
-      ],
-      "faqHeading": "Frequently Asked Questions",
-      "faqs": [
-        {
-          "question": "Can I use one of your drawings?",
-          "answer": "Of course! You can use the drawings however you like, even for commercial purposes. If you do, a mention of who created them would be appreciated but is not mandatory. The original images are all in the <a href=\"/{lang}/gallery/\">gallery</a>."
-        },
-        {
-          "question": "Do you have political affiliations?",
-          "answer": "No and I never will. The proposals are based on what is scientifically proven to be the best approach for urban mobility. A more accessible city has no political colors, it is simply objectively better than all the other alternatives."
-        },
-        {
-          "question": "Can I propose a project in Milan?",
-          "answer": "Yes, you can write me an email or simply send me a DM on any of the social media pages. You can find the contacts <a href=\"/{lang}/contacts/\">here</a>."
-        },
-        {
-          "question": "Can I propose a project outside of Milan?",
-          "answer": "As much as I would like to extend the drawings to places all over Italy, I don't think I'm in a position to do so. I only redesign areas that I live in and know very well, where I know how local public transport works, the approximate traffic levels at different times, and the needs of those who live and work there. Unfortunately, all these points do not apply to cities I don't experience daily and, to avoid doing approximate work, I tend to avoid projects in areas I don't know."
-        },
-        {
-          "question": "You're not an urban planner, what gives you the authority for these proposals?",
-          "answer": "Nothing and no one. The goal is entirely on the communication level: making citizens dream and stimulating debate and inspiring new environments. There are people much more expert than me whose job is to manage these projects to actually make them happen."
-        },
-        {
-          "question": "How are the renderings created?",
-          "answer": "The creation pipeline is quite simple: (i) I study a place in real life, (ii) I take satellite images from Google/Apple Maps, (iii) I design an alternative to what's there now trying to be as realistic as possible with real dimensions, (iv) again with Google/Apple Maps I take the 3D version of the place of interest from the best angle, (v) I draw with Procreate (on iPad) the project I had in mind, (vi) I edit images, posts and any video with Photoshop/Final Cut."
-        },
-        {
-          "question": "Can I collaborate / work with you?",
-          "answer": "I'm sorry, as much as I would like to collaborate with other people, at the moment this is a hobby for me and as such has very limited time and money resources."
-        }
-      ]
-    },
     "gallery": {
-      "title": "Gallery - PensaMI Ciclabile",
       "heading": "Image Gallery",
       "description": "Click on an image to view it larger and see related shots.",
       "empty": "No images in the gallery yet. Check back soon!"
     },
     "contacts": {
-      "title": "Contacts - PensaMI Ciclabile",
       "heading": "Contact Us",
       "email": "Email",
       "followUs": "Follow us on social media for updates:"
@@ -72,58 +26,12 @@
       "gallery": "Galleria",
       "contacts": "Contatti"
     },
-    "home": {
-      "title": "PensaMI Ciclabile",
-      "mapTitle": "Esplora PensaMI Ciclabile",
-      "mapDescription": "Mappa interattiva con tutti i punti ridisegnati a Milano."
-    },
-    "about": {
-      "title": "Chi siamo - PensaMI Ciclabile",
-      "heading": "PensaMI Ciclabile",
-      "intro": [
-        "PensaMI Ciclabile è un progetto ideato da una <a href=\"https://www.danielsc4.it\" target=\"_blank\" rel=\"noopener\">singola persona</a> dedicato ai temi della mobilità urbana sostenibile, in particolare alla ciclabilità nelle città, soprattutto a Milano.",
-        "Il progetto è nato dalla volontà di ispirare il cambiamento in una città che è rimasta troppo indietro rispetto alle altre città europee, in modo da accelerare verso una città più a misura di persone, bella da vivere e meno inquinata."
-      ],
-      "faqHeading": "Domande frequenti",
-      "faqs": [
-        {
-          "question": "Posso usare uno dei tuoi disegni?",
-          "answer": "Certo! Puoi usare i disegni come vuoi, anche per fini commerciali. Se lo fai, una menzione a chi li ha creati sarebbe ben accetta ma non obbligatoria. Le immagini originali sono tutte nella <a href=\"/{lang}/gallery/\">gallery</a>."
-        },
-        {
-          "question": "Hai affiliazioni politiche?",
-          "answer": "No e mai le avrò. Le proposte sono basate su ciò che è scientificamente dimostrato essere l'approccio migliore per la mobilità urbana. Una città più accessibile non ha colori politici, è solo oggettivamente migliore di tutte le altre alternative."
-        },
-        {
-          "question": "Posso proporre un progetto a Milano?",
-          "answer": "Sì, puoi scrivermi una mail oppure semplicemente mandarmi un DM in una qualsiasi delle pagine social. I contatti li trovi <a href=\"/{lang}/contacts/\">qui</a>."
-        },
-        {
-          "question": "Posso proporre un progetto che non sia di Milano?",
-          "answer": "Per quanto mi piacerebbe estendere i disegni a posti in tutta l'Italia non credo di essere nella posizione per farlo. Ri-disegno solo le zone che vivo e conosco molto bene, dove so come funziona il trasporto pubblico locale, conosco i livelli di traffico approssimativi nei diversi orari, le esigenze di chi ci vive e lavora. Tutti questi punti purtroppo non si applicano a città che non vivo quotidianamente e, onde evitare di fare lavori approssimativi, tendo ad evitare progetti in aree che non conosco."
-        },
-        {
-          "question": "Non sei un urbanista, cosa ti dà l'autorevolezza per queste proposte?",
-          "answer": "Niente e nessuno. L'obiettivo è tutto sul piano comunicativo: far sognare i cittadini e stimolare il dibattito e ispirare nuovi ambienti. Ci sono persone molto più esperte di me il cui lavoro è gestire questi progetti per realizzarli davvero."
-        },
-        {
-          "question": "Come vengono creati i rendering?",
-          "answer": "La pipeline di creazione è abbastanza semplice: (i) studio un luogo nella vita reale, (ii) prendo le immagini satellitari da Google/Apple Maps, (iii) progetto un'alternativa a quello che c'è ora cercando di essere il più realistico possibile con le dimensioni reali, (iv) sempre con Google/Apple Maps prendo la versione 3D del luogo di interesse dall'angolazione migliore, (v) disegno con Procreate (su iPad) il progetto che avevo in mente, (vi) edito immagini, post ed eventuale video con Photoshop/Final Cut."
-        },
-        {
-          "question": "Posso collaborare / lavorare con te?",
-          "answer": "Mi dispiace, per quanto mi piacerebbe collaborare con altre persone al momento questo è per me un hobby e come tale ha risorse di tempo e denaro molto limitate."
-        }
-      ]
-    },
     "gallery": {
-      "title": "Galleria - PensaMI Ciclabile",
       "heading": "Galleria immagini",
       "description": "Clicca su un'immagine per vederla più grande e vedere le foto correlate.",
       "empty": "Nessuna immagine nella galleria ancora. Torna presto!"
     },
     "contacts": {
-      "title": "Contatti - PensaMI Ciclabile",
       "heading": "Contattaci",
       "email": "Email",
       "followUs": "Seguici sui social media per aggiornamenti:"
