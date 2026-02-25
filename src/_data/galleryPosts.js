@@ -27,7 +27,7 @@ function getPosts() {
 
     const drawFile = files.find(f => f.startsWith("draw"));
     const originalFile = files.find(f => f.startsWith("original"));
-    const sliceFiles = files.filter(f => f.startsWith("slice"));    
+    const sliceFiles = files.filter(f => f.toLowerCase().startsWith("slice"));
 
     const lightboxImages = [
       ...(drawFile ? [drawFile] : []),
