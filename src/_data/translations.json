@@ -1,5 +1,12 @@
 {
   "en": {
+    "home": {
+      "welcome": "Reimagining Milan's streets for people and bikes.",
+      "intro": "PensaMI Ciclabile is a collection of redesigned intersections and streets in Milan, imagining a city that puts people and cycling first.",
+      "exploreMap": "Explore PensaMI Ciclabile",
+      "mapDescription": "Interactive map with all the redesigned spots in Milan.",
+      "discoverMore": "Discover more"
+    },
     "nav": {
       "about": "About",
       "gallery": "Gallery",
@@ -21,6 +28,13 @@
     }
   },
   "it": {
+    "home": {
+      "welcome": "Ripensare le strade di Milano per le persone e le biciclette.",
+      "intro": "PensaMI Ciclabile è una raccolta di incroci e strade di Milano ridisegnati, immaginando una città che mette al primo posto le persone e la ciclabilità.",
+      "exploreMap": "Esplora PensaMI Ciclabile",
+      "mapDescription": "Mappa interattiva con tutti i punti ridisegnati a Milano.",
+      "discoverMore": "Scopri di più"
+    },
     "nav": {
       "about": "Chi siamo",
       "gallery": "Galleria",

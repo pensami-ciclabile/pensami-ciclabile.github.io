@@ -4,10 +4,24 @@ title: PensaMI Ciclabile
 permalink: /en/
 ---
 
+{% set t = translations.en %}
+
 <div class="container my-4 content">
-    <div class="map-title">Explore PensaMI Ciclabile</div>
+    <div class="hero-welcome">
+        <h1>{{ t.home.welcome }}</h1>
+        <p>{{ t.home.intro }}</p>
+    </div>
+
+    <div class="map-title">{{ t.home.exploreMap }}</div>
     <div class="map-container">
         <div class="flourish-embed flourish-map" data-src="visualisation/22152403"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/22152403/thumbnail" width="100%" alt="map visualization" /></noscript></div>
     </div>
-    <div class="map-description">Interactive map with all the redesigned spots in Milan.</div>
+    <div class="map-description">{{ t.home.mapDescription }}</div>
+
+    <div class="quick-links">
+        <span class="quick-links-label">{{ t.home.discoverMore }}</span>
+        <a href="/en/about/" class="quick-link"><i class="fas fa-info-circle"></i> {{ t.nav.about }}</a>
+        <a href="/en/gallery/" class="quick-link"><i class="fas fa-images"></i> {{ t.nav.gallery }}</a>
+        <a href="/en/contacts/" class="quick-link"><i class="fas fa-envelope"></i> {{ t.nav.contacts }}</a>
+    </div>
 </div>
