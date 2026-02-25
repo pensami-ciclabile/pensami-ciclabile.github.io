@@ -1,42 +1,30 @@
 ---
 layout: base.njk
-title: Gallery - PensaMI Ciclabile
-eleventyNavigation:
-  key: Gallery
-  order: 3
 ---
 
-<div class="container my-4 content">
-  <h1 class="map-title">Image Gallery</h1>
-  <p class="map-description">Click on an image to view it larger and see related shots.</p>
+{% set t = translations[lang].gallery %}
 
-  <!-- <div style="background-color: #f0f0f0; padding: 10px; border: 1px solid #ccc; margin-bottom:20px;">
-    <h3>Debugging Information:</h3>
-    <p><strong>Is galleryPosts defined?</strong>
-      {% if galleryPosts %}YES{% else %}NO (or empty/falsy){% endif %}
-    </p>
-    <p><strong>galleryPosts raw dump:</strong></p>
-    <pre>{{ galleryPosts | dump | escape }}</pre>
-    <p><strong>galleryPosts length:</strong> {{ galleryPosts.length }}</p>
-  </div> -->
+<div class="container my-4 content">
+  <h1 class="map-title">{{ t.heading }}</h1>
+  <p class="map-description">{{ t.description }}</p>
 
   {% set posts = galleryPosts.default or galleryPosts %}
   {% if posts | length %}
   <div class="gallery-grid">
     {% for post in posts %}
-      <div class="gallery-item" 
+      <div class="gallery-item"
            data-post-id="{{ post.id }}"
            data-post-title="{{ post.title }}"
-           data-images="{{ post.lightboxImages | dump | escape }}" 
-           role="button" 
-           tabindex="0" 
+           data-images="{{ post.lightboxImages | dump | escape }}"
+           role="button"
+           tabindex="0"
            aria-label="View gallery images for {{ post.title }}">
         <img src="/assets/posts/{{ post.id }}/{{ post.originalImage }}" alt="{{ post.altText }}">
       </div>
     {% endfor %}
   </div>
 {% else %}
-  <p>No images in the gallery yet. Check back soon!</p>
+  <p>{{ t.empty }}</p>
 {% endif %}
 
 </div>
@@ -70,17 +58,17 @@ eleventyNavigation:
       currentPostId = postElement.dataset.postId;
       currentPostImages = JSON.parse(postElement.dataset.images);
       const postTitle = postElement.dataset.postTitle;
-      currentImageIndex = 0; // Start with the first image in the lightbox set
+      currentImageIndex = 0;
 
       updateLightboxImage(postTitle);
       lightbox.style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
-      lightboxClose.focus(); // Focus on close button for accessibility
+      document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
     }
 
     function updateLightboxImage(postTitle) {
       if (currentPostImages.length === 0) return;
-      
+
       const imageName = currentPostImages[currentImageIndex];
       lightboxImage.src = `/assets/posts/${currentPostId}/${imageName}`;
       lightboxImage.alt = `Enlarged image for ${postTitle} - ${imageName}`;
@@ -88,7 +76,7 @@ eleventyNavigation:
 
       lightboxPrev.style.display = currentPostImages.length > 1 ? 'block' : 'none';
       lightboxNext.style.display = currentPostImages.length > 1 ? 'block' : 'none';
-      
+
       if (currentPostImages.length > 1) {
         lightboxCounter.textContent = `${currentImageIndex + 1} / ${currentPostImages.length}`;
         lightboxPrev.disabled = currentImageIndex === 0;
@@ -100,7 +88,7 @@ eleventyNavigation:
 
     function closeLightbox() {
       lightbox.style.display = 'none';
-      document.body.style.overflow = 'auto'; // Restore scrolling
+      document.body.style.overflow = 'auto';
       currentPostImages = [];
       currentImageIndex = 0;
       currentPostId = '';
@@ -124,7 +112,7 @@ eleventyNavigation:
       item.addEventListener('click', () => openLightbox(item));
       item.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault(); // Prevent space from scrolling
+          e.preventDefault();
           openLightbox(item);
         }
       });
@@ -138,7 +126,6 @@ eleventyNavigation:
     lightboxPrev.addEventListener('click', showPrevImage);
     lightboxNext.addEventListener('click', showNextImage);
 
-    // Keyboard navigation for lightbox
     document.addEventListener('keydown', (e) => {
       if (lightbox.style.display === 'flex') {
         if (e.key === 'Escape') {
@@ -153,9 +140,8 @@ eleventyNavigation:
       }
     });
 
-    // Close lightbox if overlay is clicked
     lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) { // Check if the click is on the overlay itself
+        if (e.target === lightbox) {
             closeLightbox();
         }
     });

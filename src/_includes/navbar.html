@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/{{ lang or 'en' }}/">
             <img src="/assets/propic.png" alt="Logo"> PensaMI Ciclabile
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,15 +9,20 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
+                    <a class="nav-link" href="/{{ lang or 'en' }}/about/">{{ translations[lang].nav.about }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/gallery">Gallery</a>
+                    <a class="nav-link" href="/{{ lang or 'en' }}/gallery/">{{ translations[lang].nav.gallery }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/contacts">Contacts</a>
+                    <a class="nav-link" href="/{{ lang or 'en' }}/contacts/">{{ translations[lang].nav.contacts }}</a>
                 </li>
             </ul>
         </div>
+        {% if lang == "it" %}
+        <a class="lang-toggle" href="/en{{ page.url | replace('/it/', '/') | replace('/en/', '/') }}" title="Switch to English" aria-label="Switch to English">🇬🇧</a>
+        {% else %}
+        <a class="lang-toggle" href="/it{{ page.url | replace('/en/', '/') | replace('/it/', '/') }}" title="Passa all'italiano" aria-label="Passa all'italiano">🇮🇹</a>
+        {% endif %}
     </div>
 </nav>

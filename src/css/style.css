@@ -18,6 +18,19 @@ body {
   margin: 0;
 }
 
+/* Language Toggle */
+.lang-toggle {
+  text-decoration: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  margin-left: 12px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.lang-toggle:hover {
+  transform: scale(1.2);
+}
+
 /* Navbar Styles */
 .navbar-brand {
   display: flex;
